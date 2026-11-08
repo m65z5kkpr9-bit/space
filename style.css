@@ -1,0 +1,130 @@
+/* Genel Ayarlar */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #2e7d32; /* Doğa Yeşili */
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Kart Tasarımları */
+.kart {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.tam-genislik {
+  grid-column: span 2;
+}
+
+/* Arazi Skoru */
+.skor-cemberi {
+  font-size: 48px;
+  font-weight: bold;
+  color: #2e7d32;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.buton-yesil {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+/* Hava Durumu ve Risk */
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.uyari-normal { background-color: #e8f5e9; color: #2e7d32; padding: 15px; border-radius: 6px; }
+.uyari-tehlike { background-color: #ffebee; color: #c62828; padding: 15px; border-radius: 6px; font-weight: bold; }
+.uyari-dikkat { background-color: #fff3e0; color: #ef6c00; padding: 15px; border-radius: 6px; font-weight: bold; }
+
+/* Rotasyon Sekmeleri */
+.sekmeler {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.sekme-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.sekme-btn.aktif {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.rotasyon-bilgi {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-left: 4px solid #2e7d32;
+  border-radius: 4px;
+}
+
+/* Dron Alarmı */
+.alarm-kutusu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ff9800;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: opacity 0.5s ease;
+}
+
+.gizli {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.kapat-butonu {
+  margin-left: 15px;
+  padding: 6px 12px;
+  border: none;
+  background-color: white;
+  color: #ff9800;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+

@@ -1,11 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NASA Tarım Asistanı Prototipi</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Hello Space!
+
+  <!-- Üst Menü -->
+  <header>
+    <div class="logo">🌱 AgriSpace Karar Destek Sistemi</div>
+    <div class="lokasyon">📍 Pilot Bölge: Konya Ovası</div>
+  </header>
+
+  <main class="dashboard">
+    
+    <!-- 1. Arazi Sağlık Skoru Kartı -->
+    <div class="kart">
+      <h3>Arazi Verimliliği</h3>
+      <div class="skor-cemberi" id="skor-metni">%82</div>
+      <button id="guncelle-btn" class="buton-yesil">Uydu Verilerini Güncelle</button>
+    </div>
+
+    <!-- 2. Hava Durumu ve Önlem Kartı -->
+    <div class="kart">
+      <h3>İklim & Risk Senaryosu</h3>
+      <p>Bölgedeki uydu verisine (SMAP) göre bir durum seçin:</p>
+      <select id="senaryo-secici">
+        <option value="normal">Normal Koşullar</option>
+        <option value="yagis">Aşırı Yağış Riski</option>
+        <option value="don">Don Tehlikesi</option>
+      </select>
+      <div id="uyari-kutusu" class="uyari-normal">
+        Şu anki toprak nemi ve sıcaklık ideal seviyede.
+      </div>
+    </div>
+
+    <!-- 3. Ekim Rotasyonu Tavsiyeleri (En büyük alan) -->
+    <div class="kart tam-genislik">
+      <h3>Tavsiye Edilen Ekim Rotasyonları</h3>
+      <div class="sekmeler">
+        <button class="sekme-btn aktif" onclick="rotasyonGoster('mevcut')">Mevcut Durum</button>
+        <button class="sekme-btn" onclick="rotasyonGoster('kuraklik')">Kuraklık Dirençli</button>
+        <button class="sekme-btn" onclick="rotasyonGoster('azot')">Toprak İyileştirici</button>
+      </div>
+      
+      <div id="rotasyon-icerik" class="rotasyon-bilgi">
+        <h4>🌾 Mevcut: Buğday Monokültürü</h4>
+        <p><strong>Analiz:</strong> Yıllardır aynı ürün ekildiği için toprak yorgun. Su tüketimi orta seviyede ama verimlilik giderek düşüyor.</p>
+        <p><strong>NASA POWER Verisi:</strong> Yıllık buharlaşma (Evapotranspirasyon) oranı artışta.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 4. İlaçlama Dronu Alarmı (Gizli başlar) -->
+  <div id="dron-alarmi" class="alarm-kutusu gizli">
+    🔔 <strong>Uyarı:</strong> Rüzgar hızı düştü. İlaçlama dronu uçuşu için koşullar ideal. Rotayı onaylayın.
+    <button id="alarm-kapat" class="kapat-butonu">Tamam</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
