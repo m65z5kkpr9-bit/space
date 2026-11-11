@@ -7,17 +7,87 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menü aç/kapa" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-  <!-- Üst Menü -->
-  <header>
-    <div class="logo">🌱 AgriSpace Karar Destek Sistemi</div>
-    <div class="lokasyon">📍 Pilot Bölge: Konya Ovası</div>
-  </header>
+        <div class="brand-block">
+          <div class="brand-mark">🌱</div>
+          <div class="brand-copy">
+            <strong>AgriSpace</strong>
+            <small>Decision Suite</small>
+          </div>
+        </div>
+      </div>
 
-  <main class="dashboard">
-    
-    <!-- 1. Arazi Sağlık Skoru Kartı -->
-    <div class="kart">
+      <nav class="side-nav" aria-label="Ana menü">
+        <button class="nav-item active" data-view="overview" type="button">
+          <span class="nav-icon">🏠</span>
+          <span>Genel Bakış</span>
+        </button>
+        <button class="nav-item" data-view="soil" type="button">
+          <span class="nav-icon">🌾</span>
+          <span>Arazi Sağlığı</span>
+        </button>
+        <button class="nav-item" data-view="weather" type="button">
+          <span class="nav-icon">⛅</span>
+          <span>Hava Durumu</span>
+        </button>
+
+        <div class="nav-group">
+          <button class="nav-item has-submenu" type="button" data-view="operations">
+            <span class="nav-icon">🚜</span>
+            <span>Operasyon</span>
+            <span class="caret">▾</span>
+          </button>
+          <div class="submenu">
+            <button class="submenu-item active" data-view="drone" type="button">Drone Görevleri</button>
+            <button class="submenu-item" data-view="plans" type="button">İlaçlama Planı</button>
+            <button class="submenu-item" data-view="schedule" type="button">Çalışma Takvimi</button>
+          </div>
+        </div>
+
+        <button class="nav-item" data-view="reports" type="button">
+          <span class="nav-icon">📊</span>
+          <span>Raporlar</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="mini-status">
+          <span class="dot"></span>
+          <span>Drone sistemi hazır</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-panel">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Pilot alan yönetimi</p>
+          <h1 id="page-title">Genel Bakış</h1>
+        </div>
+        <div class="topbar-actions">
+          <button class="ghost-btn" type="button">Rapor İndir</button>
+          <button class="primary-btn" type="button">Görev Başlat</button>
+        </div>
+      </header>
+
+      <nav class="mobile-tabbar" aria-label="Mobil sekmeler">
+        <button class="tab active" type="button">🏠</button>
+        <button class="tab" type="button">📡</button>
+        <button class="tab" type="button">🛰️</button>
+        <button class="tab" type="button">⚙️</button>
+      </nav>
+
+      <main class="dashboard">
+        <section class="view-panel active" data-view="overview">
+          <div class="kart">
       <h3>Arazi Verimliliği</h3>
       <div class="skor-cemberi" id="skor-metni">%82</div>
       <button id="guncelle-btn" class="buton-yesil">Uydu Verilerini Güncelle</button>
@@ -53,12 +123,244 @@
       </div>
     </div>
 
-  </main>
+        </section>
 
-  <!-- 4. İlaçlama Dronu Alarmı (Gizli başlar) -->
-  <div id="dron-alarmi" class="alarm-kutusu gizli">
-    🔔 <strong>Uyarı:</strong> Rüzgar hızı düştü. İlaçlama dronu uçuşu için koşullar ideal. Rotayı onaylayın.
-    <button id="alarm-kapat" class="kapat-butonu">Tamam</button>
+        <section class="view-panel" data-view="drone">
+          <div class="kart tam-genislik drone-panel">
+            <div class="panel-header">
+              <h3>İlaçlama Drone Görünümü</h3>
+              <span class="flight-pill">Uçuş hazır</span>
+            </div>
+            <svg id="drone-svg" class="drone-gorsel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" xmlns:c2pa="http://c2pa.org/manifest">
+        <metadata>
+          <c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo2ZjNmYWU1YS04YmE0LTQwNjItODZjZC0yOWVhNjRmODUxOTQAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaNghxtc8we7LpRlyBOSpXpgAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDo4MzFhMzBkOS1iOTUxLTQ3N2UtYjc1My1kYjVhNjUxYzhkZWJscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo6Yb2cNUtEml8gHcGmLhoGwAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggPjFhU21LrqMjFbIVKUQBVgkz1ukgpdtLSmPi9STr2V+kZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaE0myY2AtLPMvooYonby7CcAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCAIQ6WCdbRrDaDe27NboB+1XYKbqX7FRjDm+QuQoiWFxGRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBiWZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjZmM2ZhZTVhLThiYTQtNDA2Mi04NmNkLTI5ZWE2NGY4NTE5NC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjBjYjNlZmJhLWJiMjYtNDUwZC04ZDc4LTMzYmNiMWUxMzE1N3JjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCA+MWFTbUuuoyMVshUpRAFWCTPW6SCl20tKY+L1JOvZX6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg0IUhB9h6y51X8tAMoU+vcNMHyJiHq66HnFN5QD+ACReiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggJPsCvV4d82nDdXOs/x0Zri4hekAT2hksrAfZaj0VWWp0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBD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</c2pa:manifest>
+        </metadata>
+        <title>Tarım İlaçlama Drone</title>
+        <defs>
+          <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#e3ece7"/>
+          </linearGradient>
+          <linearGradient id="gSpray" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3aa0e0" stop-opacity="0.55"/>
+            <stop offset="1" stop-color="#3aa0e0" stop-opacity="0.08"/>
+          </linearGradient>
+
+          <g id="motor">
+            <ellipse cx="0" cy="0" rx="20" ry="10" fill="#1f2b2f"/>
+            <rect x="-16" y="-26" width="32" height="26" fill="#2b3a3f"/>
+            <rect x="-16" y="-26" width="16" height="26" fill="#34474d"/>
+            <ellipse cx="0" cy="0" rx="16" ry="8" fill="#2b3a3f"/>
+            <ellipse cx="0" cy="-26" rx="16" ry="8" fill="#46606a"/>
+            <ellipse cx="0" cy="-26" rx="6" ry="3" fill="#2e9e5b"/>
+          </g>
+
+          <g id="rotor">
+            <ellipse cx="0" cy="-34" rx="88" ry="30" fill="#9fb8c4" fill-opacity="0.22" stroke="#6f8e9c" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 5"/>
+            <g transform="translate(0,-34) scale(1,0.34)">
+              <g class="blades">
+                <ellipse cx="0" cy="0" rx="86" ry="9" fill="#22303a"/>
+              </g>
+              <circle cx="0" cy="0" r="11" fill="#2e9e5b"/>
+            </g>
+          </g>
+
+          <g id="nozzle">
+            <ellipse cx="0" cy="70" rx="30" ry="10" fill="#1a2a20" opacity="0.16"/>
+            <polygon class="spray" points="0,18 -30,68 30,68" fill="url(#gSpray)"/>
+            <rect x="-3" y="8" width="6" height="12" fill="#6f8e9c"/>
+            <rect x="-7" y="18" width="14" height="6" rx="2" fill="#2b3a3f"/>
+            <circle class="spray" cx="-10" cy="42" r="2.2" fill="#3aa0e0"/>
+            <circle class="spray" cx="9" cy="36" r="2" fill="#3aa0e0"/>
+            <circle class="spray" cx="0" cy="54" r="2.4" fill="#3aa0e0"/>
+            <circle class="spray" cx="-17" cy="58" r="1.8" fill="#3aa0e0"/>
+            <circle class="spray" cx="16" cy="56" r="1.8" fill="#3aa0e0"/>
+          </g>
+        </defs>
+
+        <ellipse cx="400" cy="470" rx="150" ry="36" fill="#1a2a20" opacity="0.14"/>
+
+        <g id="arms" stroke="#2b3a3f" stroke-width="12" stroke-linecap="round" fill="none">
+          <path d="M400 290 L650 300"/>
+          <path d="M400 290 L525 408"/>
+          <path d="M400 290 L275 408"/>
+          <path d="M400 290 L150 300"/>
+          <path d="M400 290 L275 192"/>
+          <path d="M400 290 L525 192"/>
+        </g>
+        <g id="arms-highlight" stroke="#46606a" stroke-width="3" stroke-linecap="round" fill="none" transform="translate(0,-3)">
+          <path d="M400 290 L650 300"/>
+          <path d="M400 290 L525 408"/>
+          <path d="M400 290 L275 408"/>
+          <path d="M400 290 L150 300"/>
+          <path d="M400 290 L275 192"/>
+          <path d="M400 290 L525 192"/>
+        </g>
+
+        <use href="#nozzle" x="275" y="192"/>
+        <use href="#nozzle" x="525" y="192"/>
+        <use href="#motor" x="275" y="192"/>
+        <use href="#motor" x="525" y="192"/>
+        <g class="rotor" transform="translate(275 192)">
+          <ellipse cx="0" cy="-34" rx="88" ry="30" fill="#9fb8c4" fill-opacity="0.22" stroke="#6f8e9c" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 5"/>
+          <g transform="translate(0,-34) scale(1,0.34)">
+            <g class="blades">
+              <ellipse cx="0" cy="0" rx="86" ry="9" fill="#22303a"/>
+            </g>
+            <circle cx="0" cy="0" r="11" fill="#2e9e5b"/>
+          </g>
+        </g>
+        <g class="rotor" transform="translate(525 192)">
+          <ellipse cx="0" cy="-34" rx="88" ry="30" fill="#9fb8c4" fill-opacity="0.22" stroke="#6f8e9c" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 5"/>
+          <g transform="translate(0,-34) scale(1,0.34)">
+            <g class="blades">
+              <ellipse cx="0" cy="0" rx="86" ry="9" fill="#22303a"/>
+            </g>
+            <circle cx="0" cy="0" r="11" fill="#2e9e5b"/>
+          </g>
+        </g>
+
+        <use href="#nozzle" x="150" y="300"/>
+        <use href="#nozzle" x="650" y="300"/>
+        <use href="#motor" x="150" y="300"/>
+        <use href="#motor" x="650" y="300"/>
+        <g class="rotor" transform="translate(150 300)">
+          <ellipse cx="0" cy="-34" rx="88" ry="30" fill="#9fb8c4" fill-opacity="0.22" stroke="#6f8e9c" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 5"/>
+          <g transform="translate(0,-34) scale(1,0.34)">
+            <g class="blades">
+              <ellipse cx="0" cy="0" rx="86" ry="9" fill="#22303a"/>
+            </g>
+            <circle cx="0" cy="0" r="11" fill="#2e9e5b"/>
+          </g>
+        </g>
+        <g class="rotor" transform="translate(650 300)">
+          <ellipse cx="0" cy="-34" rx="88" ry="30" fill="#9fb8c4" fill-opacity="0.22" stroke="#6f8e9c" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 5"/>
+          <g transform="translate(0,-34) scale(1,0.34)">
+            <g class="blades">
+              <ellipse cx="0" cy="0" rx="86" ry="9" fill="#22303a"/>
+            </g>
+            <circle cx="0" cy="0" r="11" fill="#2e9e5b"/>
+          </g>
+        </g>
+
+        <g id="legs" stroke="#2b3a3f" stroke-width="7" stroke-linecap="round" fill="none">
+          <path d="M345 340 L322 420 M455 340 L478 420"/>
+          <path d="M300 432 L345 455 M300 432 L270 418"/>
+          <path d="M500 432 L455 455 M500 432 L530 418"/>
+          <path d="M322 420 L300 432 M478 420 L500 432"/>
+          <path d="M345 455 L455 455" stroke-width="6"/>
+        </g>
+
+        <g id="body">
+          <polygon points="335,318 400,350 465,318 465,342 400,374 335,342" fill="#2b3a3f"/>
+          <polygon points="330,262 400,297 400,357 330,322" fill="#cfdcd5"/>
+          <polygon points="400,297 470,262 470,322 400,357" fill="#e9f0ec"/>
+          <polygon points="330,296 400,331 400,345 330,310" fill="#2e9e5b"/>
+          <polygon points="400,331 470,296 470,310 400,345" fill="#278a4e"/>
+          <polygon points="400,227 470,262 400,297 330,262" fill="url(#gTop)"/>
+          <ellipse cx="400" cy="256" rx="26" ry="13" fill="#2e9e5b"/>
+          <ellipse cx="400" cy="253" rx="26" ry="13" fill="#3fb36d"/>
+          <ellipse cx="400" cy="253" rx="14" ry="7" fill="#2b3a3f"/>
+          <rect x="344" y="276" width="9" height="30" rx="4" fill="#ffffff" stroke="#6f8e9c" stroke-width="1.5" transform="skewY(26)" transform-origin="344 276"/>
+          <g transform="translate(436,283) skewY(-26)">
+            <path d="M0 -14 C-9 -2 -10 6 0 10 C10 6 9 -2 0 -14 Z" fill="#3aa0e0"/>
+            <path d="M-3 0 C-3 3 -1 5 1 5" stroke="#ffffff" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          </g>
+          <rect x="396" y="206" width="8" height="24" fill="#2b3a3f"/>
+          <ellipse cx="400" cy="206" rx="14" ry="6" fill="#46606a"/>
+          <circle cx="400" cy="203" r="3" fill="#e8453c"/>
+        </g>
+
+        <use href="#nozzle" x="275" y="408"/>
+        <use href="#nozzle" x="525" y="408"/>
+        <use href="#motor" x="275" y="408"/>
+        <use href="#motor" x="525" y="408"/>
+        <g class="rotor" transform="translate(275 408)">
+          <ellipse cx="0" cy="-34" rx="88" ry="30" fill="#9fb8c4" fill-opacity="0.22" stroke="#6f8e9c" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 5"/>
+          <g transform="translate(0,-34) scale(1,0.34)">
+            <g class="blades">
+              <ellipse cx="0" cy="0" rx="86" ry="9" fill="#22303a"/>
+            </g>
+            <circle cx="0" cy="0" r="11" fill="#2e9e5b"/>
+          </g>
+        </g>
+        <g class="rotor" transform="translate(525 408)">
+          <ellipse cx="0" cy="-34" rx="88" ry="30" fill="#9fb8c4" fill-opacity="0.22" stroke="#6f8e9c" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 5"/>
+          <g transform="translate(0,-34) scale(1,0.34)">
+            <g class="blades">
+              <ellipse cx="0" cy="0" rx="86" ry="9" fill="#22303a"/>
+            </g>
+            <circle cx="0" cy="0" r="11" fill="#2e9e5b"/>
+          </g>
+        </g>
+
+        <g id="camera">
+          <circle cx="400" cy="372" r="9" fill="#1f2b2f"/>
+          <circle cx="400" cy="372" r="5" fill="#3aa0e0"/>
+          <circle cx="398" cy="370" r="1.6" fill="#ffffff"/>
+        </g>
+      </svg>
+            <button id="ilaclamayi-baslat" class="buton-yesil" type="button">İlaçlamayı Başlat</button>
+          </div>
+        </section>
+
+        <section class="view-panel" data-view="soil">
+          <div class="kart tam-genislik">
+            <h3>Arazi Sağlığı</h3>
+            <div class="rotasyon-bilgi">
+              <h4>🌾 Toprak durumu</h4>
+              <p>Toprak nemi <strong>%68</strong>, organik madde <strong>4.1%</strong> ve pH <strong>6.4</strong>. Su tutma kapasitesi yüksek ve kök bölgesi gelişimi iyidir.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" data-view="weather">
+          <div class="kart tam-genislik">
+            <h3>Hava Durumu</h3>
+            <div class="rotasyon-bilgi">
+              <h4>⛅ Bugün</h4>
+              <p>Sıcaklık <strong>24°C</strong>, rüzgar <strong>12 km/s</strong>, nem <strong>59%</strong>. Akşam saatlerinde hafif sıcaklık düşüşü bekleniyor.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" data-view="plans">
+          <div class="kart tam-genislik">
+            <h3>İlaçlama Planı</h3>
+            <div class="rotasyon-bilgi">
+              <h4>🧭 Plan</h4>
+              <p>24 dönüm alan için üç tur planlandı. İlk tur 08:00, ikinci 12:30 ve son tur 16:45'te tamamlanacak.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" data-view="schedule">
+          <div class="kart tam-genislik">
+            <h3>Çalışma Takvimi</h3>
+            <div class="rotasyon-bilgi">
+              <h4>📅 Bugün</h4>
+              <p>08:00-10:00 tarama, 10:00-12:00 analiz, 14:00-17:00 drone operasyonu planlandı.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" data-view="reports">
+          <div class="kart tam-genislik">
+            <h3>Raporlar</h3>
+            <div class="rotasyon-bilgi">
+              <h4>📊 Son rapor</h4>
+              <p>İlaçlama etkinliği %89, verim artışı %12 ve enerji verimliliği %93 olarak ölçüldü.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- 4. İlaçlama Dronu Alarmı (Gizli başlar) -->
+    <div id="dron-alarmi" class="alarm-kutusu gizli">
+      🔔 <strong>Uyarı:</strong> Rüzgar hızı düştü. İlaçlama dronu uçuşu için koşullar ideal. Rotayı onaylayın.
+      <button id="alarm-kapat" class="kapat-butonu">Tamam</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
