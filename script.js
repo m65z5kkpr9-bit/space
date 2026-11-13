@@ -17,6 +17,33 @@ const viewTitles = {
   reports: 'Raporlar'
 };
 
+const bolgeVerileri = {
+  lacin: {
+    skor: '%82',
+    telemetri: '🌡️ <strong>NASA POWER (T2M):</strong> 14.5 °C | 🌧️ <strong>Yağış:</strong> 420 mm/yıl | 💧 <strong>SMAP Toprak Nemi:</strong> %24 | ⛰️ <strong>SRTM Eğim:</strong> %14',
+    baslik: '🌿 Laçin Mikrokliması: Zeytin, Sebze & Örtü Bitkisi',
+    aciklama: '<strong>NASA SRTM & POWER Analizi:</strong> Sakarya Vadisi geçiş iklimi kış donlarına karşı koruma sağlar. %14 vadi eğimi nedeniyle bahar sağanaklarında yüzey erozyonunu önlemek için sıra arası baklagil önerilir.'
+  },
+  konya: {
+    skor: '%68',
+    telemetri: '🌡️ <strong>NASA POWER (T2M):</strong> 11.8 °C | 🌧️ <strong>Yağış:</strong> 320 mm/yıl | 💧 <strong>SMAP Toprak Nemi:</strong> %16 (Kritik) | ⛰️ <strong>SRTM Eğim:</strong> %2',
+    baslik: '🌾 Konya Kurak Step: Buğday – Nohut/Mercimek Rotasyonu',
+    aciklama: '<strong>NASA SMAP & POWER Analizi:</strong> Düşük yağış ve %16 yüzey nemi nedeniyle yüksek su tüketen bitkiler risklidir. Toprağa azot bağlayan ve derin köklü kuraklığa dayanıklı nohut rotasyonu su tasarrufu sağlar.'
+  },
+  cukurova: {
+    skor: '%91',
+    telemetri: '🌡️ <strong>NASA POWER (T2M):</strong> 19.2 °C | 🌧️ <strong>Yağış:</strong> 650 mm/yıl | 🛰️ <strong>Sentinel-2 NDVI:</strong> 0.78 | ⛰️ <strong>SRTM Eğim:</strong> %1',
+    baslik: '☀️ Çukurova Alüvyon Ovası: Pamuk & İkinci Ürün Mısır',
+    aciklama: '<strong>Sentinel-2 NDVI & ECOSTRESS Analizi:</strong> Yüksek biyokütle canlılığı mevcut. Yaz aylarında artan yüzey sıcaklığı (LST) ve buharlaşma kaybını önlemek için damla sulama ve gece sulama takvimi önerilir.'
+  },
+  rize: {
+    skor: '%76',
+    telemetri: '🌡️ <strong>NASA POWER (T2M):</strong> 14.2 °C | 🌧️ <strong>GPM/IMERG Yağış:</strong> 2250 mm/yıl | 💧 <strong>SMAP Nem:</strong> %44 | ⛰️ <strong>SRTM Eğim:</strong> %32',
+    baslik: '🌧️ Doğu Karadeniz Nemli Orman Yamacı: Çay & Kök Tutucu Bitkiler',
+    aciklama: '<strong>NASA GPM/IMERG & SRTM Analizi:</strong> Aşırı yağış birikimi ve %32 dik eğim nedeniyle toprak kayması ve mineral yıkanması riski yüksektir. Teraslama ve derin köklü ara örtü bitkileri zorunludur.'
+  }
+};
+
 function showView(view) {
   viewPanels.forEach(panel => {
     const isActive = panel.dataset.view === view;
@@ -79,6 +106,22 @@ submenuItems.forEach(item => {
     setActiveNav(this.dataset.view);
   });
 });
+
+const bolgeSecici = document.getElementById('bolge-secici');
+if (bolgeSecici) {
+  bolgeSecici.addEventListener('change', function (e) {
+    const secilen = bolgeVerileri[e.target.value];
+    if (!secilen) return;
+
+    const skorMetni = document.getElementById('skor-metni');
+    const nasaVeriOzeti = document.getElementById('nasa-veri-ozeti');
+    const rotasyonIcerik = document.getElementById('rotasyon-icerik');
+
+    if (skorMetni) skorMetni.innerText = secilen.skor;
+    if (nasaVeriOzeti) nasaVeriOzeti.innerHTML = secilen.telemetri;
+    if (rotasyonIcerik) rotasyonIcerik.innerHTML = `<h4>${secilen.baslik}</h4><p>${secilen.aciklama}</p>`;
+  });
+}
 
 showView('overview');
 setActiveNav('overview');
