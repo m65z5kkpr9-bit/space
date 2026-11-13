@@ -1,6 +1,7 @@
 const pageTitle = document.getElementById('page-title');
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.getElementById('sidebar');
+const sidebarBackdrop = document.getElementById('sidebar-backdrop');
 const navItems = document.querySelectorAll('.nav-item[data-view]');
 const submenuItems = document.querySelectorAll('.submenu-item[data-view]');
 const navGroups = document.querySelectorAll('.nav-group');
@@ -72,11 +73,29 @@ function setActiveNav(view) {
   }
 }
 
+function closeMenu() {
+  document.body.classList.remove('menu-open');
+  if (menuToggle) {
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Menüyü aç');
+  }
+}
+
 if (menuToggle && sidebar) {
   menuToggle.addEventListener('click', function() {
-    sidebar.classList.toggle('collapsed');
+    const isOpen = document.body.classList.toggle('menu-open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.setAttribute('aria-label', isOpen ? 'Menüyü kapat' : 'Menüyü aç');
   });
 }
+
+if (sidebarBackdrop) {
+  sidebarBackdrop.addEventListener('click', closeMenu);
+}
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') closeMenu();
+});
 
 navItems.forEach(item => {
   item.addEventListener('click', function() {
@@ -89,21 +108,25 @@ navItems.forEach(item => {
       const defaultSubItem = group.querySelector('.submenu-item[data-view="drone"]') || group.querySelector('.submenu-item');
       if (defaultSubItem) {
         setActiveNav(defaultSubItem.dataset.view);
+        closeMenu();
         return;
       }
 
       this.classList.add('active');
       if (pageTitle) pageTitle.textContent = 'Operasyon';
+      closeMenu();
       return;
     }
 
     setActiveNav(view);
+    closeMenu();
   });
 });
 
 submenuItems.forEach(item => {
   item.addEventListener('click', function() {
     setActiveNav(this.dataset.view);
+    closeMenu();
   });
 });
 

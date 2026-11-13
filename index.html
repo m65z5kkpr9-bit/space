@@ -10,12 +10,6 @@
   <div class="app-shell">
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <button class="menu-toggle" id="menu-toggle" aria-label="Menü aç/kapa" type="button">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
         <div class="brand-block">
           <div class="brand-mark" aria-label="MECMua logosu">
             <svg class="brand-logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MECMua logo">
@@ -82,12 +76,20 @@
         </div>
       </div>
     </aside>
+    <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" aria-label="Menüyü kapat"></button>
 
     <div class="main-panel">
       <header class="topbar">
-        <div>
+        <div class="topbar-title">
+          <button class="menu-toggle" id="menu-toggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="sidebar" type="button">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div>
           <p class="eyebrow">Pilot alan yönetimi</p>
           <h1 id="page-title">Genel Bakış</h1>
+          </div>
         </div>
         <div class="topbar-actions">
           <button class="ghost-btn" type="button">Rapor İndir</button>
