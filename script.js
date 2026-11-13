@@ -153,7 +153,7 @@ setActiveNav('overview');
 setTimeout(function() {
   const alarm = document.getElementById('dron-alarmi');
   if (alarm) alarm.classList.remove('gizli');
-}, 4000);
+}, 8000);
 
 const alarmKapat = document.getElementById('alarm-kapat');
 if (alarmKapat) {
