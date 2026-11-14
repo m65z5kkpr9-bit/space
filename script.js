@@ -243,3 +243,46 @@ function rotasyonGoster(senaryo) {
   }
 }
 
+const raporIndirButonu = document.getElementById('rapor-indir');
+if (raporIndirButonu) {
+  raporIndirButonu.addEventListener('click', function() {
+    const now = new Date();
+    const fileDate = [
+      now.getFullYear(),
+      String(now.getMonth() + 1).padStart(2, '0'),
+      String(now.getDate()).padStart(2, '0')
+    ].join('-');
+    const bolgeAdi = bolgeSecici.selectedOptions[0].textContent.trim();
+    const uyduVerileri = document.getElementById('nasa-veri-ozeti').textContent
+      .replace(/\s*\|\s*/g, '\n')
+      .trim();
+    const raporIcerigi = [
+      'MECMua - Arazi Durum Raporu',
+      `Rapor tarihi: ${now.toLocaleDateString('tr-TR')}`,
+      `Seçili bölge: ${bolgeAdi}`,
+      `Arazi verimliliği: ${document.getElementById('skor-metni').textContent.trim()}`,
+      '',
+      'Uydu ve iklim verileri:',
+      uyduVerileri,
+      '',
+      `Risk senaryosu: ${senaryoSecici.selectedOptions[0].textContent.trim()}`,
+      `Risk değerlendirmesi: ${document.getElementById('uyari-kutusu').innerText.trim()}`,
+      '',
+      'Bölgeye özel ürün rotasyonu ve değerlendirme:',
+      document.getElementById('rotasyon-icerik').innerText.trim(),
+      '',
+      'Bu rapor, uygulamada görüntülenen veriler kullanılarak oluşturulmuştur.'
+    ].join('\n');
+    const dosya = new Blob([`\uFEFF${raporIcerigi}`], { type: 'text/plain;charset=utf-8' });
+    const indirmeUrl = URL.createObjectURL(dosya);
+    const indirmeBaglantisi = document.createElement('a');
+
+    indirmeBaglantisi.href = indirmeUrl;
+    indirmeBaglantisi.download = `mecmua-raporu-${bolgeSecici.value}-${fileDate}.txt`;
+    document.body.appendChild(indirmeBaglantisi);
+    indirmeBaglantisi.click();
+    indirmeBaglantisi.remove();
+    window.setTimeout(() => URL.revokeObjectURL(indirmeUrl), 1000);
+  });
+}
+
