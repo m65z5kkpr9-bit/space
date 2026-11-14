@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MECMua Tarım Yönetim Sistemi</title>
+  <title>MECMua Agricultural Management System</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,88 +11,88 @@
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <div class="brand-block">
-          <div class="brand-mark" aria-label="MECMua logosu">
-            <svg class="brand-logo-svg" viewBox="0 0 800 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MECMua Türkiye haritası logosu">
+          <div class="brand-mark" aria-label="MECMua logo">
+            <svg class="brand-logo-svg" viewBox="0 0 800 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MECMua map of Türkiye logo">
               <use href="#mecmua-logo-vector"/>
             </svg>
           </div>
           <div class="brand-copy">
             <strong>MECMua</strong>
-            <small>Tarım Yönetim Sistemi</small>
+            <small>Agricultural Management System</small>
           </div>
         </div>
       </div>
 
-      <nav class="side-nav" aria-label="Ana menü">
+      <nav class="side-nav" aria-label="Main navigation">
         <button class="nav-item active" data-view="overview" type="button">
           <span class="nav-icon">🏠</span>
-          <span>Genel Bakış</span>
+          <span>Overview</span>
         </button>
         <button class="nav-item" data-view="soil" type="button">
           <span class="nav-icon">🌾</span>
-          <span>Arazi Sağlığı</span>
+          <span>Soil Health</span>
         </button>
         <button class="nav-item" data-view="weather" type="button">
           <span class="nav-icon">⛅</span>
-          <span>Hava Durumu</span>
+          <span>Weather</span>
         </button>
 
         <div class="nav-group">
           <button class="nav-item has-submenu" type="button" data-view="operations">
             <span class="nav-icon">🚜</span>
-            <span>Operasyon</span>
+            <span>Operations</span>
             <span class="caret">▾</span>
           </button>
           <div class="submenu">
-            <button class="submenu-item active" data-view="drone" type="button">Drone Görevleri</button>
-            <button class="submenu-item" data-view="plans" type="button">İlaçlama Planı</button>
-            <button class="submenu-item" data-view="schedule" type="button">Çalışma Takvimi</button>
+            <button class="submenu-item active" data-view="drone" type="button">Drone Missions</button>
+            <button class="submenu-item" data-view="plans" type="button">Spraying Plan</button>
+            <button class="submenu-item" data-view="schedule" type="button">Work Schedule</button>
           </div>
         </div>
 
         <button class="nav-item" data-view="reports" type="button">
           <span class="nav-icon">📊</span>
-          <span>Raporlar</span>
+          <span>Reports</span>
         </button>
         <button class="nav-item" data-view="resources" type="button">
           <span class="nav-icon">📚</span>
-          <span>Kaynaklar</span>
+          <span>Resources</span>
         </button>
       </nav>
 
       <div class="sidebar-footer">
         <div class="mini-status">
           <span class="dot"></span>
-          <span>Drone sistemi hazır</span>
+          <span>Drone system ready</span>
         </div>
       </div>
     </aside>
-    <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" aria-label="Menüyü kapat"></button>
+    <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" aria-label="Close menu"></button>
 
     <div class="main-panel">
       <header class="topbar">
         <div class="topbar-title">
-          <button class="menu-toggle" id="menu-toggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="sidebar" type="button">
+          <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar" type="button">
             <span></span>
             <span></span>
             <span></span>
           </button>
           <div>
-          <p class="eyebrow">Pilot alan yönetimi</p>
-          <h1 id="page-title">Genel Bakış</h1>
+          <p class="eyebrow">Pilot field management</p>
+          <h1 id="page-title">Overview</h1>
           </div>
         </div>
         <div class="topbar-actions">
-          <button id="rapor-indir" class="ghost-btn" type="button">PDF Raporu Oluştur</button>
-          <button class="primary-btn" type="button">Görev Başlat</button>
+          <button id="rapor-indir" class="ghost-btn" type="button">Create PDF Report</button>
+          <button class="primary-btn" type="button">Start Mission</button>
         </div>
       </header>
 
       <div class="dashboard-header-strip">
         <div class="logo">
-          <div class="logo-graphic" aria-label="MECMua Türkiye haritası">
-            <svg id="mecmua-logo-vector" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440" aria-label="MECMua - Tarım Yönetim Sistemi">
-              <title>MECMua - Tarım Yönetim Sistemi</title>
+          <div class="logo-graphic" aria-label="MECMua map of Türkiye">
+            <svg id="mecmua-logo-vector" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440" aria-label="MECMua - Agricultural Management System">
+              <title>MECMua - Agricultural Management System</title>
               <g id="turkiye-harita" fill="#2e9e5b">
                 <circle cx="320.2" cy="67.1" r="3.3"/>
                 <circle cx="330.8" cy="67.1" r="3.3"/>
@@ -543,7 +543,7 @@
                 <circle cx="487.8" cy="151.4" r="2.1"/>
                 <circle cx="493.2" cy="151.4" r="2.1"/>
               </g>
-              <g id="yazi-alt" fill="#dce9df">
+              <g id="yazi-alt" fill="#dce9df" style="display:none">
                 <circle cx="335.5" cy="255.6" r="1.1"/>
                 <circle cx="338.4" cy="255.6" r="1.1"/>
                 <circle cx="344.2" cy="255.6" r="1.1"/>
@@ -612,70 +612,71 @@
                 <circle cx="541.4" cy="260.6" r="1.1"/>
                 <circle cx="616.8" cy="260.6" r="1.1"/>
               </g>
+              <text x="400" y="270" text-anchor="middle" fill="#dce9df" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="1.5">AGRICULTURAL MANAGEMENT SYSTEM</text>
             </svg>
           </div>
-          <span>MECMua Tarım Yönetim Sistemi</span>
+          <span>MECMua Agricultural Management System</span>
         </div>
         <div class="lokasyon">
-          📍 Pilot Bölge:
+          📍 Pilot region:
           <select id="bolge-secici">
-            <option value="lacin">Laçin, Eskişehir (Vadi Mikrokliması)</option>
-            <option value="konya">Çumra, Konya Ovası (Kurak Step)</option>
-            <option value="cukurova">Çukurova, Adana (Alüvyon Ovası)</option>
-            <option value="rize">Ardeşen, Rize (Nemli Orman Yamacı)</option>
+            <option value="lacin">Laçin, Eskişehir (Valley Microclimate)</option>
+            <option value="konya">Çumra, Konya Plain (Arid Steppe)</option>
+            <option value="cukurova">Çukurova, Adana (Alluvial Plain)</option>
+            <option value="rize">Ardeşen, Rize (Humid Forest Slope)</option>
           </select>
         </div>
       </div>
 
       <div id="nasa-veri-ozeti" class="nasa-veri-ozeti">
-        🌡️ <strong>NASA POWER (T2M):</strong> 14.5 °C | 
-        🌧️ <strong>Yağış:</strong> 420 mm/yıl | 
-        💧 <strong>SMAP Toprak Nemi:</strong> %24 | 
-        ⛰️ <strong>SRTM Eğim:</strong> %14
+        🌡️ <strong>NASA POWER (T2M):</strong> 14.5 °C |
+        🌧️ <strong>Precipitation:</strong> 420 mm/year |
+        💧 <strong>SMAP soil moisture:</strong> 24% |
+        ⛰️ <strong>SRTM slope:</strong> 14%
       </div>
 
-      <nav class="mobile-tabbar" aria-label="Mobil sekmeler">
-        <button class="tab active" type="button" data-view="overview" aria-label="Genel Bakış" title="Genel Bakış">🏠</button>
-        <button class="tab" type="button" data-view="weather" aria-label="Hava Durumu" title="Hava Durumu">📡</button>
-        <button class="tab" type="button" data-view="soil" aria-label="Arazi Sağlığı" title="Arazi Sağlığı">🛰️</button>
-        <button class="tab" type="button" data-view="drone" aria-label="Drone Görevleri" title="Drone Görevleri">🚁</button>
+      <nav class="mobile-tabbar" aria-label="Mobile tabs">
+        <button class="tab active" type="button" data-view="overview" aria-label="Overview" title="Overview">🏠</button>
+        <button class="tab" type="button" data-view="weather" aria-label="Weather" title="Weather">📡</button>
+        <button class="tab" type="button" data-view="soil" aria-label="Soil Health" title="Soil Health">🛰️</button>
+        <button class="tab" type="button" data-view="drone" aria-label="Drone Missions" title="Drone Missions">🚁</button>
       </nav>
 
       <main class="dashboard">
         <section class="view-panel active" data-view="overview">
           <div class="kart">
-      <h3>Arazi Verimliliği</h3>
-      <div class="skor-cemberi" id="skor-metni">%82</div>
-      <button id="guncelle-btn" class="buton-yesil">Uydu Verilerini Güncelle</button>
+      <h3>Field Efficiency</h3>
+      <div class="skor-cemberi" id="skor-metni">82%</div>
+      <button id="guncelle-btn" class="buton-yesil">Refresh Satellite Data</button>
     </div>
 
-    <!-- 2. Hava Durumu ve Önlem Kartı -->
+    <!-- 2. Weather and risk card -->
     <div class="kart">
-      <h3>İklim & Risk Senaryosu</h3>
-      <p>Bölgedeki uydu verisine (SMAP) göre bir durum seçin:</p>
+      <h3>Climate & Risk Scenarios</h3>
+      <p>Select a condition based on regional satellite data (SMAP):</p>
       <select id="senaryo-secici">
-        <option value="normal">Normal Koşullar</option>
-        <option value="yagis">Aşırı Yağış Riski</option>
-        <option value="don">Don Tehlikesi</option>
+        <option value="normal">Normal conditions</option>
+        <option value="rain">Heavy rainfall risk</option>
+        <option value="frost">Frost warning</option>
       </select>
       <div id="uyari-kutusu" class="uyari-normal">
-        Şu anki toprak nemi ve sıcaklık ideal seviyede.
+        Current soil moisture and temperature are within the ideal range.
       </div>
     </div>
 
-    <!-- 3. Ekim Rotasyonu Tavsiyeleri (En büyük alan) -->
+    <!-- 3. Crop rotation recommendations -->
     <div class="kart tam-genislik">
-      <h3>Tavsiye Edilen Ekim Rotasyonları</h3>
+      <h3>Recommended Crop Rotations</h3>
       <div class="sekmeler">
-        <button class="sekme-btn aktif" onclick="rotasyonGoster('mevcut')">Mevcut Durum</button>
-        <button class="sekme-btn" onclick="rotasyonGoster('kuraklik')">Kuraklık Dirençli</button>
-        <button class="sekme-btn" onclick="rotasyonGoster('azot')">Toprak İyileştirici</button>
+        <button class="sekme-btn aktif" onclick="rotasyonGoster('current')">Current System</button>
+        <button class="sekme-btn" onclick="rotasyonGoster('drought')">Drought-Resistant</button>
+        <button class="sekme-btn" onclick="rotasyonGoster('soil-building')">Soil-Building</button>
       </div>
       
       <div id="rotasyon-icerik" class="rotasyon-bilgi">
-        <h4>🌾 Mevcut: Buğday Monokültürü</h4>
-        <p><strong>Analiz:</strong> Yıllardır aynı ürün ekildiği için toprak yorgun. Su tüketimi orta seviyede ama verimlilik giderek düşüyor.</p>
-        <p><strong>NASA POWER Verisi:</strong> Yıllık buharlaşma (Evapotranspirasyon) oranı artışta.</p>
+        <h4>🌾 Current: Wheat Monoculture</h4>
+        <p><strong>Analysis:</strong> Repeatedly growing the same crop can deplete the soil. Water use is moderate, but productivity is declining.</p>
+        <p><strong>NASA POWER data:</strong> Annual evapotranspiration is increasing.</p>
       </div>
     </div>
 
@@ -684,14 +685,14 @@
         <section class="view-panel" data-view="drone">
           <div class="kart tam-genislik drone-panel">
             <div class="panel-header">
-              <h3>İlaçlama Drone Görünümü</h3>
-              <span class="flight-pill">Uçuş hazır</span>
+              <h3>Spraying Drone Overview</h3>
+              <span class="flight-pill">Ready for flight</span>
             </div>
             <svg id="drone-svg" class="drone-gorsel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" xmlns:c2pa="http://c2pa.org/manifest">
         <metadata>
           <c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo2ZjNmYWU1YS04YmE0LTQwNjItODZjZC0yOWVhNjRmODUxOTQAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaNghxtc8we7LpRlyBOSpXpgAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDo4MzFhMzBkOS1iOTUxLTQ3N2UtYjc1My1kYjVhNjUxYzhkZWJscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo6Yb2cNUtEml8gHcGmLhoGwAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggPjFhU21LrqMjFbIVKUQBVgkz1ukgpdtLSmPi9STr2V+kZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaE0myY2AtLPMvooYonby7CcAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCAIQ6WCdbRrDaDe27NboB+1XYKbqX7FRjDm+QuQoiWFxGRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBiWZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjZmM2ZhZTVhLThiYTQtNDA2Mi04NmNkLTI5ZWE2NGY4NTE5NC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjBjYjNlZmJhLWJiMjYtNDUwZC04ZDc4LTMzYmNiMWUxMzE1N3JjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCA+MWFTbUuuoyMVshUpRAFWCTPW6SCl20tKY+L1JOvZX6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg0IUhB9h6y51X8tAMoU+vcNMHyJiHq66HnFN5QD+ACReiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggJPsCvV4d82nDdXOs/x0Zri4hekAT2hksrAfZaj0VWWp0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBD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</c2pa:manifest>
         </metadata>
-        <title>Tarım İlaçlama Drone</title>
+        <title>Agricultural Spraying Drone</title>
         <defs>
           <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#ffffff"/>
@@ -856,73 +857,73 @@
           <circle cx="398" cy="370" r="1.6" fill="#ffffff"/>
         </g>
       </svg>
-            <button id="ilaclamayi-baslat" class="buton-yesil" type="button">İlaçlamayı Başlat</button>
+            <button id="ilaclamayi-baslat" class="buton-yesil" type="button">Start Spraying</button>
           </div>
         </section>
 
         <section class="view-panel" data-view="soil">
           <div class="kart tam-genislik">
-            <h3>Arazi Sağlığı</h3>
+            <h3>Soil Health</h3>
             <div class="rotasyon-bilgi">
-              <h4>🌾 Toprak durumu</h4>
-              <p>Toprak nemi <strong>%68</strong>, organik madde <strong>4.1%</strong> ve pH <strong>6.4</strong>. Su tutma kapasitesi yüksek ve kök bölgesi gelişimi iyidir.</p>
+              <h4>🌾 Soil Condition</h4>
+              <p>Soil moisture is <strong>68%</strong>, organic matter is <strong>4.1%</strong>, and pH is <strong>6.4</strong>. Water retention is high and root-zone development is good.</p>
             </div>
           </div>
         </section>
 
         <section class="view-panel" data-view="weather">
           <div class="kart tam-genislik">
-            <h3>Hava Durumu</h3>
+            <h3>Weather</h3>
             <div class="rotasyon-bilgi">
-              <h4>⛅ Bugün</h4>
-              <p>Sıcaklık <strong>24°C</strong>, rüzgar <strong>12 km/s</strong>, nem <strong>59%</strong>. Akşam saatlerinde hafif sıcaklık düşüşü bekleniyor.</p>
+              <h4>⛅ Today</h4>
+              <p>Temperature: <strong>24°C</strong>; wind: <strong>12 km/h</strong>; humidity: <strong>59%</strong>. Temperatures are expected to dip slightly this evening.</p>
             </div>
           </div>
         </section>
 
         <section class="view-panel" data-view="plans">
           <div class="kart tam-genislik">
-            <h3>İlaçlama Planı</h3>
+            <h3>Spraying Plan</h3>
             <div class="rotasyon-bilgi">
               <h4>🧭 Plan</h4>
-              <p>24 dönüm alan için üç tur planlandı. İlk tur 08:00, ikinci 12:30 ve son tur 16:45'te tamamlanacak.</p>
+              <p>Three passes are planned for a 2.4-hectare area. The first pass is at 08:00, the second at 12:30, and the final pass at 16:45.</p>
             </div>
           </div>
         </section>
 
         <section class="view-panel" data-view="schedule">
           <div class="kart tam-genislik">
-            <h3>Çalışma Takvimi</h3>
+            <h3>Work Schedule</h3>
             <div class="rotasyon-bilgi">
-              <h4>📅 Bugün</h4>
-              <p>08:00-10:00 tarama, 10:00-12:00 analiz, 14:00-17:00 drone operasyonu planlandı.</p>
+              <h4>📅 Today</h4>
+              <p>Survey: 08:00–10:00; analysis: 10:00–12:00; drone operations: 14:00–17:00.</p>
             </div>
           </div>
         </section>
 
         <section class="view-panel" data-view="reports">
           <div class="kart tam-genislik">
-            <h3>Raporlar</h3>
+            <h3>Reports</h3>
             <div class="rotasyon-bilgi">
-              <h4>📊 Son rapor</h4>
-              <p>İlaçlama etkinliği %89, verim artışı %12 ve enerji verimliliği %93 olarak ölçüldü.</p>
+              <h4>📊 Latest Report</h4>
+              <p>Spraying effectiveness was measured at 89%, yield increased by 12%, and energy efficiency reached 93%.</p>
             </div>
           </div>
         </section>
 
         <section class="view-panel" data-view="resources">
           <div class="kart tam-genislik">
-            <h3>Kaynaklar</h3>
-            <p>Topladığımız kaynaklar bu alana eklenecek.</p>
+            <h3>Resources</h3>
+            <p>Collected resources will appear here.</p>
           </div>
         </section>
       </main>
     </div>
 
-    <!-- 4. İlaçlama Dronu Alarmı (Gizli başlar) -->
+    <!-- 4. Spraying drone alert (hidden by default) -->
     <div id="dron-alarmi" class="alarm-kutusu gizli">
-      🔔 <strong>Uyarı:</strong> Rüzgar hızı düştü. İlaçlama dronu uçuşu için koşullar ideal. Rotayı onaylayın.
-      <button id="alarm-kapat" class="kapat-butonu">Tamam</button>
+      🔔 <strong>Alert:</strong> Wind speed has dropped. Conditions are ideal for the spraying drone. Confirm the route.
+      <button id="alarm-kapat" class="kapat-butonu">Dismiss</button>
     </div>
   </div>
 

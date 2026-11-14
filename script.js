@@ -9,76 +9,76 @@ const navGroups = document.querySelectorAll('.nav-group');
 const viewPanels = document.querySelectorAll('.view-panel');
 
 const viewTitles = {
-  overview: 'Genel Bakış',
-  soil: 'Arazi Sağlığı',
-  weather: 'Hava Durumu',
-  operations: 'Operasyon',
-  drone: 'Drone Görevleri',
-  plans: 'İlaçlama Planı',
-  schedule: 'Çalışma Takvimi',
-  reports: 'Raporlar',
-  resources: 'Kaynaklar'
+  overview: 'Overview',
+  soil: 'Soil Health',
+  weather: 'Weather',
+  operations: 'Operations',
+  drone: 'Drone Missions',
+  plans: 'Spraying Plan',
+  schedule: 'Work Schedule',
+  reports: 'Reports',
+  resources: 'Resources'
 };
 
 const bolgeVerileri = {
   lacin: {
-    skor: '%82',
+    skor: '82%',
     yagisMm: 420,
     nemPct: 24,
     egimPct: 14,
-    telemetri: '🌡️ <strong>NASA POWER (T2M):</strong> 14.5 °C | 🌧️ <strong>Yağış:</strong> 420 mm/yıl | 💧 <strong>SMAP Toprak Nemi:</strong> %24 | ⛰️ <strong>SRTM Eğim:</strong> %14',
-    baslik: '🌿 Laçin Mikrokliması: Zeytin, Sebze & Örtü Bitkisi',
-    aciklama: '<strong>NASA SRTM & POWER Analizi:</strong> Sakarya Vadisi geçiş iklimi kış donlarına karşı koruma sağlar. %14 vadi eğimi nedeniyle bahar sağanaklarında yüzey erozyonunu önlemek için sıra arası baklagil önerilir.'
+    telemetri: '🌡️ <strong>NASA POWER (T2M):</strong> 14.5 °C | 🌧️ <strong>Precipitation:</strong> 420 mm/year | 💧 <strong>SMAP soil moisture:</strong> 24% | ⛰️ <strong>SRTM slope:</strong> 14%',
+    baslik: '🌿 Laçin Valley Microclimate: Olives, Vegetables & Cover Crops',
+    aciklama: '<strong>NASA SRTM & POWER analysis:</strong> The Sakarya Valley transition climate helps protect against winter frost. With a 14% valley slope, cover crops between rows are recommended to reduce surface erosion during spring showers.'
   },
   konya: {
-    skor: '%68',
+    skor: '68%',
     yagisMm: 320,
     nemPct: 16,
     egimPct: 2,
-    telemetri: '🌡️ <strong>NASA POWER (T2M):</strong> 11.8 °C | 🌧️ <strong>Yağış:</strong> 320 mm/yıl | 💧 <strong>SMAP Toprak Nemi:</strong> %16 (Kritik) | ⛰️ <strong>SRTM Eğim:</strong> %2',
-    baslik: '🌾 Konya Kurak Step: Buğday – Nohut/Mercimek Rotasyonu',
-    aciklama: '<strong>NASA SMAP & POWER Analizi:</strong> Düşük yağış ve %16 yüzey nemi nedeniyle yüksek su tüketen bitkiler risklidir. Toprağa azot bağlayan ve derin köklü kuraklığa dayanıklı nohut rotasyonu su tasarrufu sağlar.'
+    telemetri: '🌡️ <strong>NASA POWER (T2M):</strong> 11.8 °C | 🌧️ <strong>Precipitation:</strong> 320 mm/year | 💧 <strong>SMAP soil moisture:</strong> 16% (Critical) | ⛰️ <strong>SRTM slope:</strong> 2%',
+    baslik: '🌾 Konya Arid Steppe: Wheat–Chickpea/Lentil Rotation',
+    aciklama: '<strong>NASA SMAP & POWER analysis:</strong> Low rainfall and 16% surface moisture make water-intensive crops risky. A drought-tolerant chickpea rotation can conserve water while adding nitrogen to the soil.'
   },
   cukurova: {
-    skor: '%91',
+    skor: '91%',
     yagisMm: 650,
     ndvi: 0.78,
     egimPct: 1,
-    telemetri: '🌡️ <strong>NASA POWER (T2M):</strong> 19.2 °C | 🌧️ <strong>Yağış:</strong> 650 mm/yıl | 🛰️ <strong>Sentinel-2 NDVI:</strong> 0.78 | ⛰️ <strong>SRTM Eğim:</strong> %1',
-    baslik: '☀️ Çukurova Alüvyon Ovası: Pamuk & İkinci Ürün Mısır',
-    aciklama: '<strong>Sentinel-2 NDVI & ECOSTRESS Analizi:</strong> Yüksek biyokütle canlılığı mevcut. Yaz aylarında artan yüzey sıcaklığı (LST) ve buharlaşma kaybını önlemek için damla sulama ve gece sulama takvimi önerilir.'
+    telemetri: '🌡️ <strong>NASA POWER (T2M):</strong> 19.2 °C | 🌧️ <strong>Precipitation:</strong> 650 mm/year | 🛰️ <strong>Sentinel-2 NDVI:</strong> 0.78 | ⛰️ <strong>SRTM slope:</strong> 1%',
+    baslik: '☀️ Çukurova Alluvial Plain: Cotton & Second-Crop Maize',
+    aciklama: '<strong>Sentinel-2 NDVI & ECOSTRESS analysis:</strong> Vegetation vitality is high. Drip irrigation and a nighttime irrigation schedule are recommended to limit summer surface-temperature (LST) and evaporation losses.'
   },
   rize: {
-    skor: '%76',
+    skor: '76%',
     yagisMm: 2250,
     nemPct: 44,
     egimPct: 32,
-    telemetri: '🌡️ <strong>NASA POWER (T2M):</strong> 14.2 °C | 🌧️ <strong>GPM/IMERG Yağış:</strong> 2250 mm/yıl | 💧 <strong>SMAP Nem:</strong> %44 | ⛰️ <strong>SRTM Eğim:</strong> %32',
-    baslik: '🌧️ Doğu Karadeniz Nemli Orman Yamacı: Çay & Kök Tutucu Bitkiler',
-    aciklama: '<strong>NASA GPM/IMERG & SRTM Analizi:</strong> Aşırı yağış birikimi ve %32 dik eğim nedeniyle toprak kayması ve mineral yıkanması riski yüksektir. Teraslama ve derin köklü ara örtü bitkileri zorunludur.'
+    telemetri: '🌡️ <strong>NASA POWER (T2M):</strong> 14.2 °C | 🌧️ <strong>GPM/IMERG precipitation:</strong> 2,250 mm/year | 💧 <strong>SMAP soil moisture:</strong> 44% | ⛰️ <strong>SRTM slope:</strong> 32%',
+    baslik: '🌧️ Eastern Black Sea Humid Forest Slope: Tea & Deep-Rooted Cover Crops',
+    aciklama: '<strong>NASA GPM/IMERG & SRTM analysis:</strong> Heavy rainfall and a steep 32% slope create a high risk of landslides and mineral leaching. Terracing and deep-rooted cover crops are essential.'
   }
 };
 
 const bolgeRaporOnerileri = {
   lacin: [
-    'Yağış öncesinde sıra arası örtü bitkisini koruyarak çıplak toprağı ve yüzey akışını azaltın.',
-    '%14 eğimli parsellerde ekim sıralarını mümkün olduğunca eş yükselti çizgilerine göre planlayın.',
-    'Kurak dönemlerde kök bölgesi nemini aynı noktalardan düzenli izleyin; sulama kararını tek ölçüme dayandırmayın.'
+    'Maintain inter-row cover crops before rainfall to reduce bare soil and surface runoff.',
+    'On 14% slopes, align planting rows along contour lines wherever practical.',
+    'During dry periods, monitor root-zone moisture at consistent locations; avoid basing irrigation decisions on a single reading.'
   ],
   konya: [
-    'Hasat artıklarını yüzeyde tutmayı ve minimum toprak işlemeyi değerlendirerek buharlaşmayı sınırlayın.',
-    'Sulama öncesinde kök bölgesi nemini doğrulayın; su kısıtında kritik gelişim dönemlerine öncelik verin.',
-    'Nohut veya mercimek rotasyonlarının sezon sonu verim ve su tüketimini kaydedip sonraki ekim planıyla karşılaştırın.'
+    'Consider retaining crop residues and minimizing tillage to limit evaporation.',
+    'Check root-zone moisture before irrigation; under water constraints, prioritize critical growth stages.',
+    'Record end-of-season yield and water use for chickpea or lentil rotations and compare them when planning the next crop.'
   ],
   cukurova: [
-    'NDVI değeri düşük görülen alanlarda sulamayı artırmadan önce tıkanıklık, tuzluluk ve bitki besleme farklarını kontrol edin.',
-    'Sulama miktarını sabit takvim yerine toprak nemi ve bitkinin gelişim evresine göre kademelendirin.',
-    'Hasat sonrası bitki artıklarını yöneterek toprağın doğrudan güneş ve buharlaşmaya maruz kalmasını azaltın.'
+    'In low-NDVI areas, check for clogged emitters, salinity, and nutrient differences before increasing irrigation.',
+    'Schedule irrigation in stages based on soil moisture and crop growth rather than a fixed calendar.',
+    'Manage post-harvest residues to reduce direct sun exposure and soil evaporation.'
   ],
   rize: [
-    'Şiddetli yağışlardan sonra terasları, drenaj çıkışlarını ve yeni yüzey akış kanallarını yerinde kontrol edin.',
-    'Dik alanlarda sürekli bitki örtüsünü koruyun; çıplak şeritleri sezon boyunca izleyin.',
-    'Besin yıkanmasını azaltmak için gübreleme zamanını yağış tahminiyle eşleştirin ve dozu yerel uzmanla doğrulayın.'
+    'After heavy rainfall, inspect terraces, drainage outlets, and any new runoff channels in the field.',
+    'Maintain continuous vegetation on steep ground and monitor bare strips throughout the season.',
+    'Time fertilizer applications around the rainfall forecast to limit nutrient leaching, and confirm rates with a local specialist.'
   ]
 };
 
@@ -115,7 +115,7 @@ function closeMenu() {
   document.body.classList.remove('menu-open');
   if (menuToggle) {
     menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.setAttribute('aria-label', 'Menüyü aç');
+    menuToggle.setAttribute('aria-label', 'Open menu');
   }
 }
 
@@ -123,7 +123,7 @@ if (menuToggle && sidebar) {
   menuToggle.addEventListener('click', function() {
     const isOpen = document.body.classList.toggle('menu-open');
     menuToggle.setAttribute('aria-expanded', String(isOpen));
-    menuToggle.setAttribute('aria-label', isOpen ? 'Menüyü kapat' : 'Menüyü aç');
+    menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
   });
 }
 
@@ -151,7 +151,7 @@ navItems.forEach(item => {
       }
 
       this.classList.add('active');
-      if (pageTitle) pageTitle.textContent = 'Operasyon';
+      if (pageTitle) pageTitle.textContent = 'Operations';
       closeMenu();
       return;
     }
@@ -194,7 +194,7 @@ if (bolgeSecici) {
 showView('overview');
 setActiveNav('overview');
 
-/* 1. DRON ALARMI (Sayfa açıldıktan 4 saniye sonra çıksın) */
+/* 1. Show the drone alert after the page loads. */
 setTimeout(function() {
   const alarm = document.getElementById('dron-alarmi');
   if (alarm) alarm.classList.remove('gizli');
@@ -208,17 +208,17 @@ if (alarmKapat) {
   });
 }
 
-/* 2. ARAZİ SKORUNU GÜNCELLEME (Yalancı yükleme efekti) */
+/* 2. Update the field score with a simulated loading effect. */
 const guncelleBtn = document.getElementById('guncelle-btn');
 if (guncelleBtn) {
   guncelleBtn.addEventListener('click', function() {
     const skorMetni = document.getElementById('skor-metni');
     if (!skorMetni) return;
 
-    skorMetni.innerText = 'Hesaplanıyor...';
+    skorMetni.innerText = 'Calculating...';
 
     setTimeout(function() {
-      skorMetni.innerText = '%85';
+      skorMetni.innerText = '85%';
     }, 1500);
   });
 }
@@ -229,11 +229,11 @@ const ilaclamaButonu = document.getElementById('ilaclamayi-baslat');
 if (droneSvg && ilaclamaButonu) {
   ilaclamaButonu.addEventListener('click', function() {
     const aktif = droneSvg.classList.toggle('drone-aktif');
-    ilaclamaButonu.textContent = aktif ? 'İlaçlamayı Durdur' : 'İlaçlamayı Başlat';
+    ilaclamaButonu.textContent = aktif ? 'Stop Spraying' : 'Start Spraying';
   });
 }
 
-/* 3. İKLİM VE RİSK SENARYOSU SEÇİCİ */
+/* 3. Climate and risk scenario selector. */
 const senaryoSecici = document.getElementById('senaryo-secici');
 if (senaryoSecici) {
   senaryoSecici.addEventListener('change', function(e) {
@@ -244,36 +244,36 @@ if (senaryoSecici) {
 
     if (secim === 'normal') {
       uyariKutusu.className = 'uyari-normal';
-      uyariKutusu.innerHTML = 'Şu anki toprak nemi ve sıcaklık ideal seviyede.';
-    } else if (secim === 'yagis') {
+      uyariKutusu.innerHTML = 'Current soil moisture and temperature are within the ideal range.';
+    } else if (secim === 'rain') {
       uyariKutusu.className = 'uyari-tehlike';
-      uyariKutusu.innerHTML = '⚠️ EROZYON RİSKİ: SMAP uydu verilerine göre aşırı yağış bekleniyor. Eğilimli bölgelerde örtü bitkisi (cover crop) kökleri tutabilir.';
-    } else if (secim === 'don') {
+      uyariKutusu.innerHTML = '⚠️ EROSION RISK: SMAP satellite data indicates heavy rainfall. Cover crops can help stabilize sloped areas.';
+    } else if (secim === 'frost') {
       uyariKutusu.className = 'uyari-dikkat';
-      uyariKutusu.innerHTML = '❄️ DON TEHLİKESİ: Gece yüzey sıcaklığı sıfırın altına düşecek. Hassas mahsuller için sulama yapmayın.';
+      uyariKutusu.innerHTML = '❄️ FROST WARNING: Surface temperatures are expected to fall below freezing overnight. Avoid irrigating frost-sensitive crops.';
     }
   });
 }
 
-/* 4. ROTASYON SEKMELERİNİ DEĞİŞTİRME */
+/* 4. Crop rotation tabs. */
 function rotasyonGoster(senaryo) {
   const icerik = document.getElementById('rotasyon-icerik');
   if (!icerik) return;
 
-  if (senaryo === 'mevcut') {
+  if (senaryo === 'current') {
     icerik.innerHTML = `
-      <h4>🌾 Mevcut: Buğday Monokültürü</h4>
-      <p><strong>Analiz:</strong> Yıllardır aynı ürün ekildiği için toprak yorgun. Su tüketimi orta seviyede.</p>
+      <h4>🌾 Current: Wheat Monoculture</h4>
+      <p><strong>Analysis:</strong> Repeatedly growing the same crop can deplete the soil. Water use is moderate.</p>
     `;
-  } else if (senaryo === 'kuraklik') {
+  } else if (senaryo === 'drought') {
     icerik.innerHTML = `
-      <h4>🏜️ Kuraklık Dirençli: Nohut veya Mercimek</h4>
-      <p><strong>Analiz:</strong> Yağışların azaldığı senaryoda su tasarrufu sağlar. Kök yapısı topraktaki mevcut nemi daha iyi kullanır.</p>
+      <h4>🏜️ Drought-Resistant: Chickpea or Lentil</h4>
+      <p><strong>Analysis:</strong> Conserves water when rainfall is limited. Its root system makes better use of available soil moisture.</p>
     `;
-  } else if (senaryo === 'azot') {
+  } else if (senaryo === 'soil-building') {
     icerik.innerHTML = `
-      <h4>🌱 Toprak İyileştirici: Yonca (Alfalfa)</h4>
-      <p><strong>Analiz:</strong> Havadan aldığı azotu toprağa bağlar. Bir sonraki sezon ekilecek ana ürünün verimini %20 artırır.</p>
+      <h4>🌱 Soil-Building: Alfalfa</h4>
+      <p><strong>Analysis:</strong> Fixes atmospheric nitrogen in the soil and can improve yields for the main crop planted next season.</p>
     `;
   }
 }
@@ -290,7 +290,7 @@ if (raporIndirButonu) {
     const skorOrtalamasi = bolgeler.reduce((toplam, kod) => toplam + skorDegeri(kod), 0) / bolgeler.length;
     const yagisOrtalamasi = bolgeler.reduce((toplam, kod) => toplam + bolgeVerileri[kod].yagisMm, 0) / bolgeler.length;
     const skorSirasi = [...bolgeler].sort((a, b) => skorDegeri(b) - skorDegeri(a)).indexOf(bolgeKodu) + 1;
-    const formatSayi = value => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 1 }).format(value);
+    const formatSayi = value => new Intl.NumberFormat('en-US', { maximumFractionDigits: 1 }).format(value);
     const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({
       '&': '&amp;',
       '<': '&lt;',
@@ -298,18 +298,18 @@ if (raporIndirButonu) {
       '"': '&quot;',
       "'": '&#39;'
     })[character]);
-    const skorDurumu = skor >= 85 ? 'Çok iyi' : skor >= 75 ? 'İyi' : skor >= 60 ? 'İzlenmeli' : 'Riskli';
-    const egimDurumu = bolge.egimPct >= 25 ? 'yüksek' : bolge.egimPct >= 12 ? 'orta' : 'düşük';
+    const skorDurumu = skor >= 85 ? 'Excellent' : skor >= 75 ? 'Good' : skor >= 60 ? 'Needs monitoring' : 'At risk';
+    const egimDurumu = bolge.egimPct >= 25 ? 'high' : bolge.egimPct >= 12 ? 'moderate' : 'low';
     const yagisFarki = ((bolge.yagisMm - yagisOrtalamasi) / yagisOrtalamasi) * 100;
     const skorFarki = skor - skorOrtalamasi;
-    const gostergeAdi = bolge.nemPct !== undefined ? 'Toprak nemi' : 'Bitki canlılığı (NDVI)';
-    const gostergeDegeri = bolge.nemPct !== undefined ? `%${bolge.nemPct}` : formatSayi(bolge.ndvi);
-    const gostergeNotu = bolge.nemPct !== undefined ? 'SMAP göstergesi' : 'Sentinel-2 göstergesi';
+    const gostergeAdi = bolge.nemPct !== undefined ? 'Soil moisture' : 'Vegetation health (NDVI)';
+    const gostergeDegeri = bolge.nemPct !== undefined ? `${bolge.nemPct}%` : formatSayi(bolge.ndvi);
+    const gostergeNotu = bolge.nemPct !== undefined ? 'SMAP indicator' : 'Sentinel-2 indicator';
     const puanGrafikSatirlari = bolgeler.map(kod => {
       const option = Array.from(bolgeSecici.options).find(item => item.value === kod);
       const bolgeSkoru = skorDegeri(kod);
       return `<div class="chart-row ${kod === bolgeKodu ? 'selected' : ''}">
-        <div class="chart-label"><span>${escapeHtml(option.textContent.trim())}</span><strong>%${bolgeSkoru}</strong></div>
+        <div class="chart-label"><span>${escapeHtml(option.textContent.trim())}</span><strong>${bolgeSkoru}%</strong></div>
         <div class="bar-track"><div class="bar score-bar" style="width:${bolgeSkoru}%"></div></div>
       </div>`;
     }).join('');
@@ -324,22 +324,22 @@ if (raporIndirButonu) {
     }).join('');
     const oneriler = bolgeRaporOnerileri[bolgeKodu].map(oneri => `<li>${escapeHtml(oneri)}</li>`).join('');
     const senaryoOnerileri = {
-      normal: 'Sulama kararından önce kök bölgesi nemini doğrulayın ve parsel gözlemlerini düzenli kaydedin.',
-      yagis: 'Aşırı yağış sonrasında eğimli alanlarda erozyon izlerini ve drenaj çıkışlarını kontrol edin; toprak tavı uygun değilken arazi trafiğini sınırlayın.',
-      don: 'Yerel tahmini ve ürünün don hassasiyetini birlikte değerlendirin; müdahaleyi ürün türüne ve gelişim dönemine göre uzmanla doğrulayın.'
+      normal: 'Check root-zone moisture before making irrigation decisions and keep regular field observations.',
+      rain: 'After heavy rainfall, inspect sloped areas for erosion and check drainage outlets; limit field traffic when the soil is too wet.',
+      frost: 'Consider the local forecast and crop frost sensitivity together; confirm any intervention with a specialist based on crop type and growth stage.'
     };
     const seciliSenaryo = senaryoSecici.selectedOptions[0].textContent.trim();
     const riskMetni = document.getElementById('uyari-kutusu').innerText.trim();
     const rotasyonMetni = document.getElementById('rotasyon-icerik').innerText.trim();
     const gecmisDegerlendirme = bolge.aciklama.replace(/<\/?strong>/g, '');
     const now = new Date();
-    const raporTarihi = now.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+    const raporTarihi = now.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
     const html = `<!doctype html>
-      <html lang="tr">
+      <html lang="en">
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>${escapeHtml(bolgeAdi)} - MECMua Arazi Raporu</title>
+          <title>${escapeHtml(bolgeAdi)} - MECMua Field Report</title>
           <style>
             * { box-sizing: border-box; }
             body { margin: 0; background: #edf2ef; color: #20302a; font: 14px/1.5 Arial, sans-serif; }
@@ -400,57 +400,57 @@ if (raporIndirButonu) {
           </style>
         </head>
         <body>
-          <div class="toolbar"><button class="print-button" type="button" onclick="window.print()">PDF olarak kaydet / yazdır</button></div>
+          <div class="toolbar"><button class="print-button" type="button" onclick="window.print()">Save as PDF / Print</button></div>
           <main class="report">
             <header class="hero">
               <div>
-                <p class="eyebrow">MECMua • Tarım Yönetim Sistemi</p>
-                <h1>Bölge Durum Raporu</h1>
+                <p class="eyebrow">MECMua • Agricultural Management System</p>
+                <h1>Field Status Report</h1>
                 <p class="hero-location">${escapeHtml(bolgeAdi)}</p>
-                <p class="hero-date">Rapor tarihi<br><strong>${escapeHtml(raporTarihi)}</strong></p>
+                <p class="hero-date">Report date<br><strong>${escapeHtml(raporTarihi)}</strong></p>
               </div>
-              <div class="score-badge"><strong>%${skor}</strong><span>${escapeHtml(skorDurumu)} arazi skoru</span></div>
+              <div class="score-badge"><strong>${skor}%</strong><span>${escapeHtml(skorDurumu)} field score</span></div>
             </header>
-            <section class="metrics" aria-label="Bölge göstergeleri">
-              <div class="metric"><span class="metric-label">Yıllık yağış</span><strong class="metric-value">${formatSayi(bolge.yagisMm)}</strong><span class="metric-note">mm / yıl</span></div>
+            <section class="metrics" aria-label="Regional indicators">
+              <div class="metric"><span class="metric-label">Annual precipitation</span><strong class="metric-value">${formatSayi(bolge.yagisMm)}</strong><span class="metric-note">mm / year</span></div>
               <div class="metric"><span class="metric-label">${escapeHtml(gostergeAdi)}</span><strong class="metric-value">${escapeHtml(gostergeDegeri)}</strong><span class="metric-note">${escapeHtml(gostergeNotu)}</span></div>
-              <div class="metric"><span class="metric-label">Arazi eğimi</span><strong class="metric-value">%${formatSayi(bolge.egimPct)}</strong><span class="metric-note">${escapeHtml(egimDurumu)} erozyon hassasiyeti</span></div>
-              <div class="metric"><span class="metric-label">Pilot skoru sırası</span><strong class="metric-value">${skorSirasi} / ${bolgeler.length}</strong><span class="metric-note">Tanımlı pilot bölgeler arasında</span></div>
+              <div class="metric"><span class="metric-label">Field slope</span><strong class="metric-value">${formatSayi(bolge.egimPct)}%</strong><span class="metric-note">${escapeHtml(egimDurumu)} erosion sensitivity</span></div>
+              <div class="metric"><span class="metric-label">Pilot score rank</span><strong class="metric-value">${skorSirasi} / ${bolgeler.length}</strong><span class="metric-note">Among the configured pilot regions</span></div>
             </section>
             <section class="section">
-              <h2>Öne çıkan istatistikler</h2>
-              <p class="section-intro">Arazi skoru, dört pilot bölgenin ${formatSayi(skorOrtalamasi)} puan ortalamasının ${Math.abs(skorFarki).toLocaleString('tr-TR', { maximumFractionDigits: 1 })} puan ${skorFarki >= 0 ? 'üzerinde' : 'altında'}. Yıllık yağış ise pilot bölge ortalamasından %${Math.abs(yagisFarki).toLocaleString('tr-TR', { maximumFractionDigits: 1 })} ${yagisFarki >= 0 ? 'yüksek' : 'düşük'} (${formatSayi(yagisOrtalamasi)} mm/yıl).</p>
+              <h2>Key statistics</h2>
+              <p class="section-intro">The field score is ${Math.abs(skorFarki).toLocaleString('en-US', { maximumFractionDigits: 1 })} points ${skorFarki >= 0 ? 'above' : 'below'} the four-region pilot average of ${formatSayi(skorOrtalamasi)}. Annual precipitation is ${Math.abs(yagisFarki).toLocaleString('en-US', { maximumFractionDigits: 1 })}% ${yagisFarki >= 0 ? 'higher' : 'lower'} than the pilot average (${formatSayi(yagisOrtalamasi)} mm/year).</p>
               <div class="charts">
-                <div class="chart-card"><h3>Pilot bölgelerde arazi skoru</h3>${puanGrafikSatirlari}</div>
-                <div class="chart-card"><h3>Pilot bölgelerde yıllık yağış</h3>${yagisGrafikSatirlari}</div>
+                <div class="chart-card"><h3>Field scores across pilot regions</h3>${puanGrafikSatirlari}</div>
+                <div class="chart-card"><h3>Annual precipitation across pilot regions</h3>${yagisGrafikSatirlari}</div>
               </div>
             </section>
             <section class="section recommendations">
               <div class="insight">
-                <h2>Bölgesel değerlendirme</h2>
+                <h2>Regional assessment</h2>
                 <strong>${escapeHtml(bolge.baslik.replace(/<[^>]*>/g, ''))}</strong>
                 <p>${escapeHtml(gecmisDegerlendirme)}</p>
               </div>
               <div class="insight risk">
-                <h2>Seçili senaryo: ${escapeHtml(seciliSenaryo)}</h2>
+                <h2>Selected scenario: ${escapeHtml(seciliSenaryo)}</h2>
                 <p>${escapeHtml(riskMetni)}</p>
-                <p><strong>Önerilen takip:</strong> ${escapeHtml(senaryoOnerileri[senaryoSecici.value])}</p>
+                <p><strong>Recommended follow-up:</strong> ${escapeHtml(senaryoOnerileri[senaryoSecici.value])}</p>
               </div>
             </section>
             <section class="section recommendations">
               <div class="recommendation-card">
-                <h3>Bu bölge için ek saha önerileri</h3>
+                <h3>Additional field recommendations</h3>
                 <ul>${oneriler}</ul>
               </div>
               <div class="recommendation-card">
-                <h3>Uygulamadaki rotasyon notu</h3>
+                <h3>Crop rotation notes</h3>
                 <p>${escapeHtml(rotasyonMetni)}</p>
-                <p><strong>Eğim göstergesi:</strong> %${formatSayi(bolge.egimPct)} — ${escapeHtml(egimDurumu)} erozyon hassasiyeti.</p>
+                <p><strong>Slope indicator:</strong> ${formatSayi(bolge.egimPct)}% — ${escapeHtml(egimDurumu)} erosion sensitivity.</p>
               </div>
             </section>
             <footer class="footnote">
-              Karşılaştırmalar yalnızca uygulamada tanımlı dört pilot bölgenin verileriyle hesaplanmıştır; Türkiye geneli ortalaması değildir.
-              Rapor, uygulamadaki örnek/sabit göstergelerden otomatik oluşturulmuştur. Ek öneriler genel karar desteğidir; saha koşulları ve yerel uzman görüşüyle doğrulanmalıdır.
+              Comparisons use only the four pilot regions configured in this application; they are not national averages.
+              This report is generated from sample/static application indicators. Additional recommendations are general decision support and should be verified against field conditions and local expert advice.
             </footer>
           </main>
         </body>
@@ -458,7 +458,7 @@ if (raporIndirButonu) {
     const reportWindow = window.open('', '_blank');
 
     if (!reportWindow) {
-      window.alert('PDF raporu açılamadı. Tarayıcıda açılır pencerelere izin verip yeniden deneyin.');
+      window.alert('The PDF report could not be opened. Allow pop-ups in your browser and try again.');
       return;
     }
 
