@@ -4,6 +4,7 @@ const sidebar = document.getElementById('sidebar');
 const sidebarBackdrop = document.getElementById('sidebar-backdrop');
 const navItems = document.querySelectorAll('.nav-item[data-view]');
 const submenuItems = document.querySelectorAll('.submenu-item[data-view]');
+const mobileTabItems = document.querySelectorAll('.mobile-tabbar .tab[data-view]');
 const navGroups = document.querySelectorAll('.nav-group');
 const viewPanels = document.querySelectorAll('.view-panel');
 
@@ -15,7 +16,8 @@ const viewTitles = {
   drone: 'Drone Görevleri',
   plans: 'İlaçlama Planı',
   schedule: 'Çalışma Takvimi',
-  reports: 'Raporlar'
+  reports: 'Raporlar',
+  resources: 'Kaynaklar'
 };
 
 const bolgeVerileri = {
@@ -58,6 +60,7 @@ function setActiveNav(view) {
 
   navItems.forEach(item => item.classList.toggle('active', item === activeNav));
   submenuItems.forEach(item => item.classList.toggle('active', item === activeSubmenu));
+  mobileTabItems.forEach(item => item.classList.toggle('active', item.dataset.view === view));
 
   navGroups.forEach(group => {
     const hasMatch = group.querySelector(`.submenu-item[data-view="${view}"]`);
@@ -124,6 +127,13 @@ navItems.forEach(item => {
 });
 
 submenuItems.forEach(item => {
+  item.addEventListener('click', function() {
+    setActiveNav(this.dataset.view);
+    closeMenu();
+  });
+});
+
+mobileTabItems.forEach(item => {
   item.addEventListener('click', function() {
     setActiveNav(this.dataset.view);
     closeMenu();

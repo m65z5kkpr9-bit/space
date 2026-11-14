@@ -12,21 +12,8 @@
       <div class="sidebar-header">
         <div class="brand-block">
           <div class="brand-mark" aria-label="MECMua logosu">
-            <svg class="brand-logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MECMua logo">
-              <defs>
-                <linearGradient id="mecmuaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#e7f8ee"/>
-                  <stop offset="100%" stop-color="#cfeee4"/>
-                </linearGradient>
-              </defs>
-              <circle cx="60" cy="60" r="52" fill="url(#mecmuaGradient)"/>
-              <g id="m28">
-                <path d="M28 76C35 58 41 45 49 34C54 28 62 26 67 31C72 36 69 45 63 52C58 58 55 62 52 69C50 72 48 79 46 84C41 81 35 79 28 76Z" fill="#2e9e5b"/>
-                <path d="M58 31C67 38 76 46 83 58C88 67 89 77 84 86C79 95 68 101 56 101C46 101 37 96 33 89C29 82 27 72 32 65C40 54 49 43 58 31Z" fill="#1d7a46" opacity="0.88"/>
-                <path d="M46 50C58 44 67 42 76 46C69 57 62 62 52 69C49 63 47 57 46 50Z" fill="#edfdf3" opacity="0.9"/>
-                <path d="M62 38C70 43 78 50 83 61" stroke="#edfdf3" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.9"/>
-                <circle cx="66" cy="60" r="6" fill="#ffffff" opacity="0.8"/>
-              </g>
+            <svg class="brand-logo-svg" viewBox="0 0 800 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MECMua Türkiye haritası logosu">
+              <use href="#mecmua-logo-vector"/>
             </svg>
           </div>
           <div class="brand-copy">
@@ -67,6 +54,10 @@
           <span class="nav-icon">📊</span>
           <span>Raporlar</span>
         </button>
+        <button class="nav-item" data-view="resources" type="button">
+          <span class="nav-icon">📚</span>
+          <span>Kaynaklar</span>
+        </button>
       </nav>
 
       <div class="sidebar-footer">
@@ -100,7 +91,7 @@
       <div class="dashboard-header-strip">
         <div class="logo">
           <div class="logo-graphic" aria-label="MECMua Türkiye haritası">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440" aria-label="MECMua - Tarım Yönetim Sistemi">
+            <svg id="mecmua-logo-vector" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440" aria-label="MECMua - Tarım Yönetim Sistemi">
               <title>MECMua - Tarım Yönetim Sistemi</title>
               <g id="turkiye-harita" fill="#2e9e5b">
                 <circle cx="320.2" cy="67.1" r="3.3"/>
@@ -487,7 +478,7 @@
                 <circle cx="698.2" cy="158.0" r="3.3"/>
                 <circle cx="708.8" cy="158.0" r="3.3"/>
               </g>
-              <g id="yazi-baslik" fill="#1f2b2f">
+              <g id="yazi-baslik" fill="#dce9df">
                 <circle cx="150.3" cy="146.8" r="2.1"/>
                 <circle cx="155.7" cy="146.8" r="2.1"/>
                 <circle cx="161.1" cy="146.8" r="2.1"/>
@@ -552,7 +543,7 @@
                 <circle cx="487.8" cy="151.4" r="2.1"/>
                 <circle cx="493.2" cy="151.4" r="2.1"/>
               </g>
-              <g id="yazi-alt" fill="#1f2b2f">
+              <g id="yazi-alt" fill="#dce9df">
                 <circle cx="335.5" cy="255.6" r="1.1"/>
                 <circle cx="338.4" cy="255.6" r="1.1"/>
                 <circle cx="344.2" cy="255.6" r="1.1"/>
@@ -644,10 +635,10 @@
       </div>
 
       <nav class="mobile-tabbar" aria-label="Mobil sekmeler">
-        <button class="tab active" type="button">🏠</button>
-        <button class="tab" type="button">📡</button>
-        <button class="tab" type="button">🛰️</button>
-        <button class="tab" type="button">⚙️</button>
+        <button class="tab active" type="button" data-view="overview" aria-label="Genel Bakış" title="Genel Bakış">🏠</button>
+        <button class="tab" type="button" data-view="weather" aria-label="Hava Durumu" title="Hava Durumu">📡</button>
+        <button class="tab" type="button" data-view="soil" aria-label="Arazi Sağlığı" title="Arazi Sağlığı">🛰️</button>
+        <button class="tab" type="button" data-view="drone" aria-label="Drone Görevleri" title="Drone Görevleri">🚁</button>
       </nav>
 
       <main class="dashboard">
@@ -916,6 +907,13 @@
               <h4>📊 Son rapor</h4>
               <p>İlaçlama etkinliği %89, verim artışı %12 ve enerji verimliliği %93 olarak ölçüldü.</p>
             </div>
+          </div>
+        </section>
+
+        <section class="view-panel" data-view="resources">
+          <div class="kart tam-genislik">
+            <h3>Kaynaklar</h3>
+            <p>Topladığımız kaynaklar bu alana eklenecek.</p>
           </div>
         </section>
       </main>
